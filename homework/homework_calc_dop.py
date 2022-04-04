@@ -11,7 +11,7 @@ n = 0
 while s!='exit':
     s = input("Введите данные через пробел: ").split()
     try:
-        if s[0] =='exit':
+        if s[0] =='exit':   
             print('Спасибо, до скорых встреч!')
             break
         else:    
