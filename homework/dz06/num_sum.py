@@ -1,4 +1,4 @@
-def sum_of_numbers(q):
+def num_sum(q):
     s1 = 0
     sum = 0
     s = int(q)
@@ -11,7 +11,7 @@ def sum_of_numbers(q):
 
 
 q = input('Введите любое число: ')
-sum_of_numbers(q)
+num_sum(q)
   
 
     

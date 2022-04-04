@@ -3,7 +3,7 @@ def fibbonachi(m):
     fib_old = 0
     fib_now = 1
     for i in range(1,m):
-        fib = fib_old + fib_now 
+        fib = fib_old + fib_now
         fib_old = fib_now
         fib_now= fib
         print(f'Fibbonachi ({m}), znachenie №({i}):',fib)
