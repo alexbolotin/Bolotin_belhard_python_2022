@@ -1,17 +1,22 @@
-def hello(name):
-    def decor():
-        x = 'decor.'
-        print(f'Выполняем функцию {x}.{name}')
-        print(f'Привет {name}')
-        print(f'Выполнено {x}.{name}')
-    return decor
+def decorator(funct):
+    def wrapper(*args,**kwargs):
+        print(f'Выполняем функцию {dop}{name}')
+        funct(name,dop)
+        print(f'Выполнено {dop}{name}')
+    return wrapper
+
+@decorator
+def hello(name,dop):
+    print(f'Привет {name}')
 
 
-b = 'Alex'
-#n = input('Введите своё имя: ')
 
-a = hello(b)
-a()
+name = 'Alex'
+dop ='decor.'
+#name = input('Введите своё имя: ')
+
+hello(name,dop)
+
 
 
 
