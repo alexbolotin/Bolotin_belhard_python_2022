@@ -5,9 +5,7 @@ def rec(l,n):
             s = l[0]
             probel = ' '
             print(f'{probel*n}{s}')
-            l.pop(0)
-        
-            
+            l.pop(0)      
         elif type(l[0]) == list:
             n +=4
             l1 = l[0]
@@ -16,7 +14,7 @@ def rec(l,n):
             n = 0
 
 
-l = [1,2,[3,4,[1,2,3]],5,6,7,[1,2,3,4]]
+l = [12,2,[3,4,[1,2,[1,2,[2,3]],3]],5,6,7,[1,2,3,4],1]
 n = 0
 print(l)
 rec(l,n)

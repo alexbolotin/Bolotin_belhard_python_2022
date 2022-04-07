@@ -1,21 +1,19 @@
 def decorator(funct):
     def wrapper(*args,**kwargs):
-        print(f'Выполняем функцию {dop}{name}')
-        funct(name,dop)
-        print(f'Выполнено {dop}{name}')
+        print(f'Выполняем функцию {funct.__name__}')
+        funct(name)
+        print(f'Выполнено {funct.__name__}')
     return wrapper
 
 @decorator
-def hello(name,dop):
+def hello1(name):
     print(f'Привет {name}')
 
 
-
 name = 'Alex'
-dop ='decor.'
 #name = input('Введите своё имя: ')
 
-hello(name,dop)
+hello1(name)
 
 
 

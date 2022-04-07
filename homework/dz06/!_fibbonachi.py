@@ -1,12 +1,10 @@
-def fibbonachi(m):
-    fib = 0
-    fib_old = 0
-    fib_now = 1
-    for i in range(1,m):
-        fib = fib_old + fib_now
-        fib_old = fib_now
-        fib_now= fib
-        print(f'Fibbonachi ({m}), znachenie №({i}):',fib)
+def fibbonachi(n):
+        a,b = 0, 1
+        for i in range(1,n+1):
+                sum = a + b
+                a = b
+                b = sum     
+                yield sum
 
 n = 0
 while n != 'exit':
@@ -16,16 +14,11 @@ while n != 'exit':
     elif n == '0':
             print('Введите число, отличное от 0')
     elif n == '1':
-            print('1')
+            print('0,1')
     elif n.isdigit() == False:
             print('Введите целое число')
     elif n.isdigit() == True:
-            m = int(n)
-            fibbonachi(m)
-    
-        
-        
-    
-
+            s = fibbonachi(int(n))
+            print(list(s))
 
 

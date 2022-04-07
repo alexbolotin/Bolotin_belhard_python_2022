@@ -1,18 +1,14 @@
-def num_sum(q):
-    s1 = 0
-    sum = 0
-    s = int(q)
-    s_len = len((q))
-    for i in range(s_len,-1,-1):
-        s1 = s//10**i
-        s -= s1*(10**i)
-        sum += s1
-    print(sum)
-
-
-q = input('Введите любое число: ')
-num_sum(q)
-  
-
-    
-
+def num_sum(s,n,sum):
+    if n != 0:
+        sum += int(s[n-1])
+        n -= 1
+        num_sum(s,n,sum)
+    else: 
+        print(sum)
+ 
+# q = (input('Введите любое число: '))
+q = '123451011110'
+s = [i for i in q]
+sum = 0
+print(f'Сумма числа {q} :')
+num_sum(s,len(q),sum)
