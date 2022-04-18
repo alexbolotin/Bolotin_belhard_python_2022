@@ -1,18 +1,22 @@
 from datetime import date
 
 class BookCard():
-    
+    __author: str
+    __title: str
+    __year: int
+
+
     def __init__(self,author:str, title:str, year:int):
-        self.__author = author
-        self.__title = title
-        self.__year = year
+        self.author = author
+        self.title = title
+        self.year = year
 
     def get_info(self):
-        print(f'Книга автора: {self.__author}\nОписание: {self.__title}\nГод впуска: {self.__year}\n ')
+        print(f'Книга автора: {self.author}\nОписание: {self.title}\nГод впуска: {self.year}\n ')
         return ''
 
     def __repr__(self):
-        return self.__author
+        return f'Book ( {self.author}, {self.title}, {self.year})'
 
     @property
     def author(self):
@@ -28,10 +32,10 @@ class BookCard():
 
     @author.setter
     def author(self,author):
-        if type(author) != str:
-            raise Warning (ValueError, 'ошибка данных')
+        if type(author) == str:
+            self.__author = author 
         else: 
-            self.__author = author
+            raise Warning (ValueError, 'ошибка данных')
 
     @title.setter
     def title(self,title):
