@@ -26,22 +26,23 @@ class Phone:
         if self.is_busy is False:
             self.start_call = datetime.datetime.today()
             self.is_busy = True
-            print(f'Звонит {name}\n')
-            self.call_history.append([self.start_call,name, tell])
+            print(f'\nЗвонит {name}\n')
+            self.call_history.append([self.start_call.strftime("%Y-%m-%d %H.%M.%S"),name, tell])
         else:
             print('Занято')
-            self.miss_call.append([self.start_call,name, tell])
+            self.miss_call.append([self.start_call.strftime("%Y-%m-%d %H.%M.%S"),name, tell])
+            self.call_history.append([self.start_call.strftime("%Y-%m-%d %H.%M.%S"),name, tell])
         
 
     def end_call(self):
         t2 = datetime.datetime.now()
         t = t2 - self.start_call
         self.is_busy = False
-        print(f'Звонок завершен.Время разговора: {t}')
+        print(f'\nЗвонок завершен.Время разговора: {t}\n')
         self.start_call = 0
     
     def history(self):
-        print('История звонков:')
+        print('\nИстория звонков:')
         for i in self.call_history:
             print(i)
 
@@ -60,8 +61,7 @@ class Phone:
         return ''
 
     def recieve_sms(self,name,txt):
-        time = datetime.datetime.today()
-        t = time.strftime("%Y-%m-%d %H.%M.%S")
+        t = datetime.datetime.today().strftime("%Y-%m-%d %H.%M.%S")
         self.incoming_sms.append([name, t, txt])
         print(f'new sms: from {name} : {txt}')
 
@@ -92,24 +92,24 @@ txt2 = 'new sms'
 # s21.recieve_sms(name2,txt2)
 # s21.sms_history()
 
-# s21.receive_call(name1,tell1)
-# time.sleep(2)
-# s21.receive_call(name2,tell2)
-# time.sleep(1)
-# s21.receive_call(name2,tell2)
-# time.sleep(1)
-# s21.receive_call(name2,tell2)
-# time.sleep(1)
-# s21.end_call()
+s21.receive_call(name1,tell1)
+time.sleep(2)
+s21.receive_call(name2,tell2)
+time.sleep(1)
+s21.receive_call(name2,tell2)
+time.sleep(1)
+s21.receive_call(name2,tell2)
+time.sleep(1)
+s21.end_call()
 
-# s21.miss_history()
-# s21.receive_call(name1,tell2)
-# time.sleep(1)
-# s21.receive_call(name1,tell1)
-# time.sleep(1)
-# s21.end_call()
-# s21.miss_history()
-# s21.history()
+s21.miss_history()
+s21.receive_call(name1,tell2)
+time.sleep(1)
+s21.receive_call(name1,tell1)
+time.sleep(1)
+s21.end_call()
+s21.miss_history()
+s21.history()
 
 
 
