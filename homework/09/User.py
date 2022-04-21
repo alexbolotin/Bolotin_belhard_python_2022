@@ -71,7 +71,7 @@ class User():
             return False
         
     def __check___login(self,__login,__name):
-        if re.match(r'[A-Za-z0-9_]{6,}$', __login):
+        if re.match(r'^[A-Za-z0-9_]{6,}$', __login):
             return True
         else:
            print(f'{__name} - Поменяйте Ваш логин!')
@@ -118,26 +118,22 @@ user_3 = User('Пушкин', 'skazka', 'qweQWEqwe1')
 user_4 = User('Гоголь', 'poemaaa', 'asdhywGEEEW4')
 
 user_1.get_info()
-# user_2.get_info()
-# user_2.block()
-# user_2.get_info()
-# user_2.unblock()
-# user_2.get_info()
+user_2.get_info()
+user_2.block()
+user_2.get_info()
+user_2.unblock()
+user_2.get_info()
 
-# date1 = date(2020,3,20)
-# date2 = date(2022,1,15)
-# date3 = date(2023,5,31)
-# data4 = date(2022,4,23)
-# user_1.check_subscr()
-# user_2.subscription_date = data4
-# user_2.check_subscr()
-# user_1.donate(10)
-# user_1.get_info()
+date1 = date(2020,3,20)
+date2 = date(2022,1,15)
+date3 = date(2023,5,31)
+data4 = date(2022,4,23)
+user_1.check_subscr()
+user_2.subscription_date = data4
+user_2.check_subscr()
+user_1.donate(10)
+user_1.get_info()
 
-# user_1.check___password()
-# user_2.check___password()
-# new___password = '123'
-# user_2.change_pass(new___password)
 
 
 
