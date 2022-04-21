@@ -88,9 +88,9 @@ tell2 = random_tel()
 txt1 = 'hello'
 txt2 = 'new sms'
 
-# s21.recieve_sms(name1,txt1)
-# s21.recieve_sms(name2,txt2)
-# s21.sms_history()
+s21.recieve_sms(name1,txt1)
+s21.recieve_sms(name2,txt2)
+s21.sms_history()
 
 s21.receive_call(name1,tell1)
 time.sleep(2)
