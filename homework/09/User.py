@@ -10,25 +10,19 @@ class User():
     subscription_date: date
     subscription_mode: int
     
-    def __init__(self, __name, __login, __password = '', is_blocked = False, subscription_date = None, subscription_mode = 'free'):
+    def __init__(self, name, login, password = '', is_blocked = False, subscription_date = None, subscription_mode = 'free'):
         
-        while not self.__check___name(__name):
-            __name = input('Введите новое имя:')
-            self.__check___name(__name)
-            self.__name = __name
-            break 
+        while not self.__check__name(name):
+            name = self.__new_name()
         else:
-            self.__name = __name
+            self.__name = name
 
-        while not self.__check___login(__login, __name):
-            __login = input('Введите новый логин:')
-            self.__check___login(__login, __name)
-            self.__login = __login
-            break 
+        while not self.__check__login(login, name):
+            login = self.__new_login()
         else:
-            self.__login = __login
+            self.__login = login
         
-        self.__password = self.__check___password(__password)
+        self.__password = self.__check__password(password)
 
         self.is_blocked = is_blocked
 
@@ -51,10 +45,16 @@ class User():
     def unblock(self):
         self.is_blocked = False
 
+    def __new_name(self):
+        return input('Введите новое имя:')
+
+    def __new_login(self):
+        return input('Введите новый логин:')
+
     def check_subscr(self):
         
         if self.subscription_date <= date.today():
-            print(f'{self.__name} - пополните счет, подписка закончилась')
+            print(f'{self.__name} - пополните счет, подписка закончилась\n')
         else:
             data = self.subscription_date - date.today()
             print(f'{self.__name} У вас осталось {data.days} дней подписки, вид подписки: {self.subscription_mode}')
@@ -63,53 +63,51 @@ class User():
         self.subscription_mode = 'paid'
         self.subscription_date += timedelta(days = val)
 
-    def __check___name(self, __name):
-        if len(re.findall("[а-яА-Я]",__name)) == len(__name):
+    def __check__name(self, name):
+        if len(re.findall("[а-яА-Я]",name)) == len(name):
             return True
         else:
-            print(f'{__name} - Поменяйте Ваше имя!')
+            print(f'{name} - Поменяйте Ваше имя!')
             return False
         
-    def __check___login(self,__login,__name):
-        if re.match(r'^[A-Za-z0-9_]{6,}$', __login):
+    def __check__login(self,login,name):
+        if re.match(r'^[A-Za-z0-9_]{6,}$', login):
             return True
         else:
-           print(f'{__name} - Поменяйте Ваш логин!')
+           print(f'{name} - Поменяйте Ваш логин!')
            return False
 
-    def __check___password(self, __password):
-        if self.__check___password_pattern(__password):
-            return __password
+    def __check__password(self, password):
+        if self.__check__password_pattern(password):
+            return password
         else:
-            __password = ''
-            __password = self.__change_pass(__password)
-            return __password
+            return self.__change_pass(password)
 
-    def __check___password_pattern(self, __password):
-            if re.search(r'^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)[0-9a-zA-Z_-]{6,}$', __password):
+    def __check__password_pattern(self, password):
+            if re.search(r'^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)[0-9a-zA-Z_-]{6,}$', password):
                 return True
             else:
                 return False
 
-    def __change_pass(self,__password):
-            if self.__check___password_pattern(__password):
+    def __change_pass(self,password):
+            if self.__check__password_pattern(password):
                 print('Вы успешно сменили пароль.')
                 return ''
             else:
                 print(f'{self.__name} - Пароль небезопасен. Пароль будет сгенерирован системой.')
                 time.sleep(1)
-            while not self.__check___password_pattern(__password):
+            while not self.__check__password_pattern(password):
                 str1 = '1234567890'
                 str2 = 'qwertyuiopasdfghjklzxcvbnm'
                 str3 = str2.upper()
                 str4 = str1+str2+str3
                 l = list(str4)
-                new___password = ''
+                new__password = ''
                 for x in range(10):
-                    new___password = new___password + random.choice(l)   
-                __password = new___password
-            print(f'{self.__name} - вот Ваш новый пароль, сохраните и запомните его: {__password}\n')
-            return __password
+                    new__password = new__password + random.choice(l)   
+                password = new__password
+            print(f'{self.__name} - вот Ваш новый пароль, сохраните и запомните его: {password}\n')
+            return password
 
 
 user_1 = User('Моби', 'rasskaz')
@@ -124,14 +122,13 @@ user_2.get_info()
 user_2.unblock()
 user_2.get_info()
 
-date1 = date(2020,3,20)
-date2 = date(2022,1,15)
-date3 = date(2023,5,31)
+
 data4 = date(2022,4,23)
 user_1.check_subscr()
 user_2.subscription_date = data4
 user_2.check_subscr()
 user_1.donate(10)
+
 user_1.get_info()
 
 
