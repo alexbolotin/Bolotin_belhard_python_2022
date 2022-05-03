@@ -145,19 +145,19 @@ def print_sql():
     db.commit()
     db.close()
 
-
-# db = sqlite3.connect('user.db')
-# c = db.cursor()
-# c.execute("""CREATE TABLE user (
-#                         name text,
-#                         login text,
-#                         password text,
-#                         is_blocked text,
-#                         sub_date date,
-#                         sub_mode text
-# )""")
-# db.commit()
-# db.close()
+# после 1 запуска - закоментить 
+db = sqlite3.connect('user.db')
+c = db.cursor()
+c.execute("""CREATE TABLE user (
+                        name text,
+                        login text,
+                        password text,
+                        is_blocked text,
+                        sub_date date,
+                        sub_mode text
+)""")
+db.commit()
+db.close()
 
 db = sqlite3.connect('user.db')
 c = db.cursor()
