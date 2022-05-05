@@ -56,6 +56,7 @@ def bot_message(message):
 
 def change_message(message):
     text = message.text.lower()
+    bot.send_message(message.chat.id, 'А я напишу все наоборот!!')
     bot.send_message(message.chat.id, text[::-1])
     bot.send_message(message.chat.id, '😂😂😂')
     end_func(message)
@@ -215,4 +216,4 @@ def end_func(message):
     txt = 'ну что, продолжим общение?'
     bot.register_next_step_handler(msg, welcome_user, txt)
 
-bot.polling(none_stop = True)  
+bot.polling(none_stop = True)
